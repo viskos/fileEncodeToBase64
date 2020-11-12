@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import {CustomInput} from './CustomInput'
+import {CustomButton} from './CustomButton'
 
 const EncodeFile = () => {
     const [files, setFiles] = useState([])
@@ -20,7 +22,6 @@ const EncodeFile = () => {
             reader.onload = () => {
                 baseFiles.push(reader.result)
                 setBase64Files(baseFiles)
-                console.log(base64Files)
             }
             reader.onerror = (e) => {
                 console.error(e)
@@ -36,17 +37,8 @@ const EncodeFile = () => {
 
     return (
         <>
-            <input
-                type="file"
-                onChange={changeFiles}
-                multiple
-            />
-            <button
-                type="submit"
-                onClick={uploadFiles}
-            >
-                Upload
-            </button>
+            <CustomInput onChange={changeFiles}/>
+            <CustomButton onClick={uploadFiles}/>
         </>
     )
 }
